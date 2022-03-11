@@ -1,8 +1,12 @@
 
 class Roller:
 
-    def __init__(self, dice):
+    def __init__(self, name, health, dice):
+        self.health = health
         self.dice = dice
+
+    def __str__(self):
+        return self.name + ": " + self.health
 
     def roll(self):
         result = {"attack": 0, "block": 0, "energy": 0}
@@ -12,3 +16,4 @@ class Roller:
                 outcome = die.roll()
                 for item in outcome:
                     result[item] += outcome[item]
+        return result
