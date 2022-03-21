@@ -1,7 +1,7 @@
 
 class Roller:
 
-    def __init__(self, name, health, dice):
+    def __init__(self, name, health, dice, size, img_dir=""):
         self.health = health
         self.dice = dice
 
