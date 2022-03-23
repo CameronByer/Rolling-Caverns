@@ -14,9 +14,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Rolling Caverns")
 clock = pygame.time.Clock() ## For syncing the FPS
 
-zombie = Enemy.Enemy("Zombie", 45, None, None, 3)
-eos = Enemy.Enemy("Eater of Souls", 40, None, None, 2)
-eoc = Enemy.Enemy("Eye of Cthulhu", 3000, None, None, 6)
+zombie = Enemy.Zombie()
+eos = Enemy.EaterOfSouls()
+eoc = Enemy.EyeOfCthulhu()
 
 ## Game loop
 running = True
