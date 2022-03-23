@@ -9,7 +9,7 @@ class Die:
         self.roll()
 
     def draw(self, x, y, face_size):
-        self.top.draw(self, x, y, face_size
+        self.top.draw(self, x, y, face_size)
 
     def draw_expanded(self, x, y, face_size):
         offsets = [(1, 0), (0, 1), (1, 1), (2, 1), (1, 2), (1, 3)]
@@ -26,5 +26,5 @@ class Face:
     def __init__(self, value):
         self.value = value
 
-    def draw(self, x, y):
-        print(self.value, x, y)
+    def draw(self, x, y, face_size):
+        print(self.value, x, y, face_size)

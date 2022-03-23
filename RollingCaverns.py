@@ -2,19 +2,21 @@ import pygame
 import random
 
 import Die
+import Enemy
 
 WIDTH = 800
 HEIGHT = 600
 FPS = 60
-
-def get_roll(dice):
-    results = [die.roll() for die in dice]
 
 ## initialize pygame and create window
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Rolling Caverns")
 clock = pygame.time.Clock() ## For syncing the FPS
+
+zombie = Enemy.Enemy("Zombie", 45, None, None, 3)
+eos = Enemy.Enemy("Eater of Souls", 40, None, None, 2)
+eoc = Enemy.Enemy("Eye of Cthulhu", 3000, None, None, 6)
 
 ## Game loop
 running = True
@@ -31,7 +33,11 @@ while running:
             if event.button == 1: #Left Click
                 pass
 
-    screen.fill(DARKGREEN)
+    screen.fill((255, 255, 255))
+
+    zombie.draw(screen, 50, 100)
+    eos.draw(screen, 500, 200)
+    eoc.draw(screen, 150, 300)
 
     pygame.display.flip()       
 
