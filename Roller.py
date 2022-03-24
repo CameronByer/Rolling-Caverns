@@ -2,19 +2,11 @@ import pygame
 
 class Roller:
 
-    def __init__(self, name, health, dice, img_dir="", frames=1):
+    def __init__(self, name, health, dice, frames):
         self.frames = frames
         self.frame = 0
         self.health = health
         self.dice = dice
-        uncropped = pygame.image.load(img_dir+"/"+name+".png")
-        w, h = uncropped.get_size()
-        h = h//frames-2
-        cropped = pygame.Surface((w, h))
-        cropped.blit(uncropped, (0, 0, w, h))
-        cropped.set_colorkey(cropped.get_at((0, 0)))
-        self.image = cropped
-        self.size = w, h
 
     def __str__(self):
         return self.name + ": " + self.health
