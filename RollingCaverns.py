@@ -3,6 +3,7 @@ import random
 
 import Die
 import Enemy
+import Item
 
 WIDTH = 800
 HEIGHT = 600

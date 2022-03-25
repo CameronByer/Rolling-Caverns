@@ -1,9 +1,6 @@
 import pygame
 import Roller
 
-def load_content(self):
-    pass
-
 class Enemy(Roller.Roller):
     def __init__(self, name, health, dice, drops, frames=1):
         super().__init__(name, health, dice, frames)
