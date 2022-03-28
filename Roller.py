@@ -15,11 +15,11 @@ class Roller:
         screen.blit(self.image, (x, y))
 
     def roll(self):
-        result = {"attack": 0, "block": 0, "energy": 0}
+        result = {}
         for die in dice:
-            if die.cost <= result["energy"]:
-                result["energy"] -= die.cost
-                outcome = die.roll()
-                for item in outcome:
-                    result[item] += outcome[item]
+            outcome = die.roll()
+            for item in outcome:
+                if not item in result:
+                    result[item] = 0
+                result[item] += outcome[item]
         return result
