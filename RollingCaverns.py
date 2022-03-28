@@ -19,6 +19,11 @@ zombie = Enemy.Zombie()
 eos = Enemy.EaterOfSouls()
 eoc = Enemy.EyeOfCthulhu()
 
+ws = Item.WoodenSword()
+gh = Item.GoldHelmet()
+
+player_die = Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, None) for i in range(3)])
+
 ## Game loop
 running = True
 while running:
@@ -29,7 +34,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
-                pass
+                player_die.roll()
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
@@ -39,6 +44,9 @@ while running:
     zombie.draw(screen, 50, 100)
     eos.draw(screen, 500, 200)
     eoc.draw(screen, 150, 300)
+
+    player_die.draw(screen, 70, 200)
+    player_die.draw_expanded(screen, 220, 80)
 
     pygame.display.flip()       
 
