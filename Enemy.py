@@ -1,4 +1,5 @@
 import pygame
+
 import Die
 import Item
 import Roller
@@ -22,16 +23,16 @@ class Enemy(Roller.Roller):
 
 class Eater_Of_Souls(Enemy, frames=2):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(3)]
         super().__init__(40, dice, None, self.frames)
         #self.image = pygame.transform.rotate(self.image, -90)
 
 class Eye_Of_Cthulhu(Enemy, frames=6):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(3)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(4)]
         super().__init__(3000, dice, None, self.frames)
 
 class Zombie(Enemy, frames=3):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(1)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(2)]
         super().__init__(45, dice, None, self.frames)

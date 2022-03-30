@@ -3,6 +3,7 @@ import random
 
 import Die
 import Enemy
+import Layout
 import Item
 
 WIDTH = 800
@@ -48,6 +49,7 @@ while running:
 
     for pos, enemy in enumerate(enemies):
         enemy.draw(screen, 80+pos*150, 50)
+    Layout.basic.draw(screen, enemies[1:3])
 
     player_die.draw(screen, 650, 170)
     player_die.draw_expanded(screen, 600, 50)
