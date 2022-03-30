@@ -16,13 +16,15 @@ pygame.display.set_caption("Rolling Caverns")
 clock = pygame.time.Clock() ## For syncing the FPS
 
 zombie = Enemy.Zombie()
-eos = Enemy.EaterOfSouls()
-eoc = Enemy.EyeOfCthulhu()
+eos = Enemy.Eater_Of_Souls()
+eoc = Enemy.Eye_Of_Cthulhu()
 
-ws = Item.WoodenSword()
-gh = Item.GoldHelmet()
+ws = Item.Wooden_Sword()
+gh = Item.Gold_Helmet()
 
 player_die = Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, None) for i in range(3)])
+
+enemies = [zombie, eos, eoc]
 
 ## Game loop
 running = True
@@ -35,19 +37,21 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
                 player_die.roll()
+                for enemy in enemies:
+                    for die in enemy.dice:
+                        die.roll()
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
 
     screen.fill((255, 255, 255))
 
-    zombie.draw(screen, 50, 100)
-    eos.draw(screen, 500, 200)
-    eoc.draw(screen, 150, 300)
+    for pos, enemy in enumerate(enemies):
+        enemy.draw(screen, 80+pos*150, 50)
 
-    player_die.draw(screen, 70, 200)
-    player_die.draw_expanded(screen, 220, 80)
+    player_die.draw(screen, 650, 170)
+    player_die.draw_expanded(screen, 600, 50)
 
-    pygame.display.flip()       
+    pygame.display.flip()
 
 pygame.quit()

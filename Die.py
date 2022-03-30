@@ -10,7 +10,7 @@ class Die:
         self.roll()
 
     def draw(self, screen, x, y, face_size=50, border=2):
-        self.top.draw(screen, x, y, face_size)
+        self.top.draw(screen, x, y, face_size, border)
 
     def draw_expanded(self, screen, x, y, face_size=50, border=2):
         #offsets = [(1, 0), (0, 1), (1, 1), (2, 1), (1, 2), (1, 3)]

@@ -13,6 +13,8 @@ class Roller:
 
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))
+        for slot, die in enumerate(self.dice):
+            die.draw(screen, x-60, y+slot*60)
 
     def roll(self):
         result = {}
