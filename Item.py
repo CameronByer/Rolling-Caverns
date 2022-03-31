@@ -23,6 +23,10 @@ class Dud(Item):
 class Gold_Helmet(Item):
     def __init__(self):
         super().__init__()
+
+class Potion(Item):
+    def __init__(self):
+        super().__init__()
         
 class Wooden_Sword(Item):
     def __init__(self):
