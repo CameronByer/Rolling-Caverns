@@ -5,6 +5,7 @@ import Die
 import Enemy
 import Layout
 import Item
+import Player
 
 WIDTH = 800
 HEIGHT = 600
@@ -24,7 +25,9 @@ gh = Item.Gold_Helmet()
 po = Item.Potion()
 ws = Item.Wooden_Sword()
 
-player_die = Die.Die(0, [Die.Face(ws, None) for i in range(2)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(2)])
+player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(2)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(2)]) for i in range(3)]
+
+player = Player.Player(100, player_dice)
 
 enemies = [zombie, eos, eoc]
 
@@ -38,10 +41,11 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
-                player_die.roll()
                 for enemy in enemies:
                     for die in enemy.dice:
                         die.roll()
+                for die in player.dice:
+                    die.roll()
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
@@ -50,10 +54,7 @@ while running:
 
     for pos, enemy in enumerate(enemies):
         enemy.draw(screen, 80+pos*150, 50)
-    Layout.basic.draw(screen, (enemies[0],enemies[2]))
-
-    player_die.draw(screen, 650, 170)
-    player_die.draw_expanded(screen, 600, 50)
+    Layout.basic.draw(screen, (player, enemies[0]))
 
     pygame.display.flip()
 

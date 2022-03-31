@@ -2,7 +2,7 @@ import pygame
 
 class Roller:
 
-    def __init__(self, name, health, dice, frames):
+    def __init__(self, name, health, dice, frames=1):
         self.frames = frames
         self.frame = 0
         self.health = health
