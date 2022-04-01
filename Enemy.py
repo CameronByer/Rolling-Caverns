@@ -19,7 +19,7 @@ class Enemy(Roller.Roller):
         cropped.set_colorkey(cropped.get_at((0, 0)))
         cls.image = cropped
         cls.size = w, h
-        cls.default_attack = Die.Face(Item.Item(name, cls.image), "VALUE")
+        cls.default_attack = Die.Face(Item.Item(name=name, image=cls.image), "VALUE")
 
 class Eater_Of_Souls(Enemy, frames=2):
     def __init__(self):

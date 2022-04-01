@@ -1,13 +1,13 @@
 import pygame
 
 class Item:
-    def __init__(self, name=None, image=None):
-        if name == None:
-            self.name = type(self).__name__.replace("_", " ")
+    def __init__(self, **kwargs):
+        if "name" in kwargs:
+            self.name = kwargs["name"]
         else:
-            self.name = name
-        if image != None:
-            self.image = image
+            self.name = type(self).__name__.replace("_", " ")
+        if "image" in kwargs:
+            self.image = kwargs["image"]
     def __init_subclass__(cls, image_path="Item/"):
         name = cls.__name__.replace("_", " ")
         cls.image = pygame.image.load(image_path+name+".png")

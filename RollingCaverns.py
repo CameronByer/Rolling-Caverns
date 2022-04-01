@@ -25,7 +25,7 @@ gh = Item.Gold_Helmet()
 po = Item.Potion()
 ws = Item.Wooden_Sword()
 
-player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(2)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(2)]) for i in range(3)]
+player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(1)]) for i in range(3)]
 
 player = Player.Player(100, player_dice)
 
