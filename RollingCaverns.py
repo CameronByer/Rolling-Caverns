@@ -42,10 +42,8 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
                 for enemy in enemies:
-                    for die in enemy.dice:
-                        die.roll()
-                for die in player.dice:
-                    die.roll()
+                    print(type(enemy), enemy.roll())
+                print(player.roll())
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
@@ -64,8 +62,8 @@ pygame.quit()
 ### ROADMAP ###
 
 1) Functional Fight
-    a) Player Class
-    b) Item Effects
+    a) Player Class --- DONE ---
+    b) Item Effects --- DONE ---
     c) Turn Resolution
     d) Fight Resolution
     

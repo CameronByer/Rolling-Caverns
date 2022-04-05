@@ -1,6 +1,7 @@
 import pygame
 
 class Item:
+    stats = {}
     def __init__(self, **kwargs):
         if "name" in kwargs:
             self.name = kwargs["name"]
@@ -8,8 +9,13 @@ class Item:
             self.name = type(self).__name__.replace("_", " ")
         if "image" in kwargs:
             self.image = kwargs["image"]
-    def __init_subclass__(cls, image_path="Item/"):
+    def __init_subclass__(cls, **kwargs):
         name = cls.__name__.replace("_", " ")
+        image_path = "Item/"
+        if "image_path" in kwargs:
+            image_path = kwargs.pop("image_path")
+        cls.stats = kwargs
+        print(cls.stats)
         cls.image = pygame.image.load(image_path+name+".png")
         cls.image.set_colorkey(cls.image.get_at((0, 0)))
         cls.size = cls.image.get_size()
@@ -20,15 +26,15 @@ class Dud(Item):
     def __init__(self):
         super().__init__()
 
-class Gold_Helmet(Item):
+class Gold_Helmet(Item, block=5):
     def __init__(self):
         super().__init__()
 
-class Potion(Item):
+class Potion(Item, heal=10):
     def __init__(self):
         super().__init__()
         
-class Wooden_Sword(Item):
+class Wooden_Sword(Item, attack=7):
     def __init__(self):
         super().__init__()
 

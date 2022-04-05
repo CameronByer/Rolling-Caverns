@@ -18,10 +18,10 @@ class Roller:
 
     def roll(self):
         result = {}
-        for die in dice:
+        for die in self.dice:
             outcome = die.roll()
-            for item in outcome:
-                if not item in result:
-                    result[item] = 0
-                result[item] += outcome[item]
+            for stat in outcome.item.stats:
+                if not stat in result:
+                    result[stat] = 0
+                result[stat] += outcome.item.stats[stat]
         return result

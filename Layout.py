@@ -9,7 +9,7 @@ class Layout:
             pass
         for index, roller in enumerate(rollers):
             self.draw_funcs[index](screen, roller)
-
+            
 
 def left_under(screen, roller):
     screen.blit(roller.image, (100, 600-roller.image.get_height()-90))

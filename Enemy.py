@@ -8,7 +8,7 @@ class Enemy(Roller.Roller):
     def __init__(self, health, dice, drops, frames=1):
         super().__init__(type(self).__name__.replace("_", " "), health, dice, frames)
         self.drops = drops
-    def __init_subclass__(cls, frames=1):
+    def __init_subclass__(cls, attack=0, frames=1):
         name = cls.__name__.replace("_", " ")
         cls.frames = frames
         uncropped = pygame.image.load("Enemy/"+name+".png")
@@ -19,20 +19,20 @@ class Enemy(Roller.Roller):
         cropped.set_colorkey(cropped.get_at((0, 0)))
         cls.image = cropped
         cls.size = w, h
-        cls.default_attack = Die.Face(Item.Item(name=name, image=cls.image), "VALUE")
+        cls.default_attack = Die.Face(Item.Item(name=name, image=cls.image, attack=attack), "VALUE")
 
-class Eater_Of_Souls(Enemy, frames=2):
+class Eater_Of_Souls(Enemy, attack=12, frames=2):
     def __init__(self):
         dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(3)]
         super().__init__(40, dice, None, self.frames)
         #self.image = pygame.transform.rotate(self.image, -90)
 
-class Eye_Of_Cthulhu(Enemy, frames=6):
+class Eye_Of_Cthulhu(Enemy, attack=18, frames=6):
     def __init__(self):
         dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(4)]
         super().__init__(3000, dice, None, self.frames)
 
-class Zombie(Enemy, frames=3):
+class Zombie(Enemy, attack=8, frames=3):
     def __init__(self):
         dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(2)]
         super().__init__(45, dice, None, self.frames)
