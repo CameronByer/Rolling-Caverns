@@ -4,11 +4,13 @@ class Item:
     stats = {}
     def __init__(self, **kwargs):
         if "name" in kwargs:
-            self.name = kwargs["name"]
+            self.name = kwargs.pop("name")
         else:
             self.name = type(self).__name__.replace("_", " ")
         if "image" in kwargs:
-            self.image = kwargs["image"]
+            self.image = kwargs.pop("image")
+        if not self.stats:
+            self.stats = kwargs
     def __init_subclass__(cls, **kwargs):
         name = cls.__name__.replace("_", " ")
         image_path = "Item/"
