@@ -6,6 +6,7 @@ class Roller:
         self.name = name
         self.frames = frames
         self.frame = 0
+        self.maxhealth = health
         self.health = health
         self.dice = dice
 
@@ -14,8 +15,16 @@ class Roller:
 
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))
+
+    def drawdice(self, screen, x, y, die_size=50, padding=10):
         for slot, die in enumerate(self.dice):
-            die.draw(screen, x-60, y+slot*60)
+            die.draw(screen, x-(die_size+padding), y+slot*(die_size+padding))
+
+    def drawhealth(self, screen, x, y, width, height):
+        pygame.draw.rect(screen, (0, 255, 0), (x, y, width, height))
+        missing = (self.maxhealth-self.health)/self.maxhealth
+        missing = min(max(0, missing), 1)
+        pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height*missing))
 
     def roll(self):
         result = {}

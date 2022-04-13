@@ -42,8 +42,10 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
                 for enemy in enemies:
+                    enemy.health -= 1
                     print(type(enemy), enemy.roll())
                 print(player.roll())
+                player.health -= 1
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
@@ -52,6 +54,7 @@ while running:
 
     for pos, enemy in enumerate(enemies):
         enemy.draw(screen, 80+pos*150, 50)
+        enemy.drawdice(screen, 80+pos*150, 50)
     Layout.basic.draw(screen, (player, enemies[0]))
 
     pygame.display.flip()
