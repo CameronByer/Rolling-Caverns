@@ -41,11 +41,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
-                for enemy in enemies:
-                    enemy.health -= 1
-                    print(type(enemy), enemy.roll())
-                print(player.roll())
-                player.health -= 1
+                player.turn(enemies)
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
