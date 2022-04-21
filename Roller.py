@@ -13,6 +13,10 @@ class Roller:
     def __str__(self):
         return self.name + ": " + str(self.health)
 
+    def damage(self, amount):
+        self.health -= amount
+        self.health = max(0, self.health)
+
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))
 
@@ -26,12 +30,14 @@ class Roller:
         missing = min(max(0, missing), 1)
         pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height*missing))
 
+    def heal(self, amount):
+        self.health += amount
+        self.health = min(self.health, self.maxhealth)
+
     def roll(self):
-        result = {}
+        result = {"attack": 0, "block":0, "heal":0}
         for die in self.dice:
             outcome = die.roll()
             for stat in outcome.item.stats:
-                if not stat in result:
-                    result[stat] = 0
                 result[stat] += outcome.item.stats[stat]
         return result

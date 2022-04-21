@@ -17,9 +17,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Rolling Caverns")
 clock = pygame.time.Clock() ## For syncing the FPS
 
-zombie = Enemy.Zombie()
-eos = Enemy.Eater_Of_Souls()
-eoc = Enemy.Eye_Of_Cthulhu()
+#zombie = Enemy.Zombie()
+#eos = Enemy.Eater_Of_Souls()
+#eoc = Enemy.Eye_Of_Cthulhu()
 
 gh = Item.Gold_Helmet()
 po = Item.Potion()
@@ -29,19 +29,32 @@ player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, N
 
 player = Player.Player(100, player_dice)
 
-enemies = [zombie, eos, eoc]
+enemies = []
 
 ## Game loop
 running = True
 while running:
 
     clock.tick(FPS) ## will make the loop run at the same speed all the time
+    while len(enemies) < 3:
+        if random.randint(0, 1):
+            enemies.append(Enemy.Zombie())
+        else:
+            enemies.append(Enemy.Eater_Of_Souls())
+    enemy = enemies[0]
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #Left Click
-                player.turn(enemies)
+                while len(enemies)>0 and enemies[0].health<=0:
+                    enemies = enemies[1:]
+                while len(enemies) < 3:
+                    if random.randint(0, 1):
+                        enemies.append(Enemy.Zombie())
+                    else:
+                        enemies.append(Enemy.Eater_Of_Souls())
+                player.turn(enemies[0])
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
                 pass
@@ -53,6 +66,7 @@ while running:
         enemy.drawdice(screen, 80+pos*150, 50)
     Layout.basic.draw(screen, (player, enemies[0]))
 
+
     pygame.display.flip()
 
 pygame.quit()
@@ -63,8 +77,10 @@ pygame.quit()
 1) Functional Fight
     a) Player Class --- DONE ---
     b) Item Effects --- DONE ---
-    c) Turn Resolution
+    c) Turn Resolution --- DONE ---
     d) Fight Resolution
+        i) For Enemies --- DONE ---
+        ii) For Players
     
 2) 10 Enemies
     a) Green Slime

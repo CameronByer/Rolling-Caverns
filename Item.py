@@ -17,7 +17,6 @@ class Item:
         if "image_path" in kwargs:
             image_path = kwargs.pop("image_path")
         cls.stats = kwargs
-        print(cls.stats)
         cls.image = pygame.image.load(image_path+name+".png")
         cls.image.set_colorkey(cls.image.get_at((0, 0)))
         cls.size = cls.image.get_size()
@@ -28,7 +27,7 @@ class Dud(Item):
     def __init__(self):
         super().__init__()
 
-class Gold_Helmet(Item, block=5):
+class Gold_Helmet(Item, block=15):
     def __init__(self):
         super().__init__()
 
