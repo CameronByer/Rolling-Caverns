@@ -13,9 +13,10 @@ class Roller:
     def __str__(self):
         return self.name + ": " + str(self.health)
 
-    def damage(self, amount):
-        self.health -= amount
-        self.health = max(0, self.health)
+    def attack(self, other):
+        damage = sum(die.top.item.stats["damage"] for die in self.dice if "damage" in die.top.item.stats)
+        block = sum(die.top.item.stats["block"] for die in other.dice if "block" in die.top.item.stats)
+        other.hurt(max(0, damage-block))
 
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))
@@ -34,8 +35,12 @@ class Roller:
         self.health += amount
         self.health = min(self.health, self.maxhealth)
 
+    def hurt(self, amount):
+        self.health -= amount
+        self.health = max(0, self.health)        
+
     def roll(self):
-        result = {"attack": 0, "block":0, "heal":0}
+        result = {"damage": 0, "block":0, "heal":0}
         for die in self.dice:
             outcome = die.roll()
             for stat in outcome.item.stats:

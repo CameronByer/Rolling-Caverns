@@ -35,7 +35,7 @@ class Potion(Item, heal=10):
     def __init__(self):
         super().__init__()
         
-class Wooden_Sword(Item, attack=7):
+class Wooden_Sword(Item, damage=7):
     def __init__(self):
         super().__init__()
 

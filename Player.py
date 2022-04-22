@@ -11,12 +11,8 @@ class Player(Roller.Roller):
         player_result = self.roll()
         enemy_result = enemy.roll()
 
-        enemy_attack = enemy_result["attack"]-player_result["block"]
-        if enemy_attack > 0:
-            self.damage(enemy_attack)
-        player_attack = player_result["attack"]-enemy_result["block"]
-        if player_attack > 0:
-            enemy.damage(player_attack)
+        self.attack(enemy)
+        enemy.attack(self)
 
         self.heal(player_result["heal"])
                     
