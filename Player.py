@@ -7,6 +7,10 @@ class Player(Roller.Roller):
         super().__init__("Player", health, dice)
         self.image = pygame.image.load("Other/Player.png")
 
+    def kill(self):
+        self.health = self.maxhealth
+        print("DEATH")
+
     def turn(self, enemy):
         player_result = self.roll()
         enemy_result = enemy.roll()
@@ -14,5 +18,8 @@ class Player(Roller.Roller):
         self.attack(enemy)
         enemy.attack(self)
 
-        self.heal(player_result["heal"])
+        if self.health <= 0:
+            self.kill()
+        else:
+            self.heal(player_result["heal"])
                     

@@ -17,9 +17,18 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Rolling Caverns")
 clock = pygame.time.Clock() ## For syncing the FPS
 
-#zombie = Enemy.Zombie()
-#eos = Enemy.Eater_Of_Souls()
-#eoc = Enemy.Eye_Of_Cthulhu()
+enemy_list = (Enemy.Antlion,
+              Enemy.Blood_Crawler,
+              Enemy.Demon,
+              Enemy.Eater_Of_Souls,
+              Enemy.Harpy,
+              Enemy.Hornet,
+              Enemy.Ice_Slime,
+              Enemy.Shark,
+              Enemy.Skeleton,
+              Enemy.Tim,
+              Enemy.Vulture,
+              Enemy.Zombie)
 
 gh = Item.Gold_Helmet()
 po = Item.Potion()
@@ -29,18 +38,13 @@ player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, N
 
 player = Player.Player(100, player_dice)
 
-enemies = []
+enemies = [random.choice(enemy_list)() for i in range(3)]
 
 ## Game loop
 running = True
 while running:
 
     clock.tick(FPS) ## will make the loop run at the same speed all the time
-    while len(enemies) < 3:
-        if random.randint(0, 1):
-            enemies.append(Enemy.Zombie())
-        else:
-            enemies.append(Enemy.Eater_Of_Souls())
     enemy = enemies[0]
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -50,10 +54,7 @@ while running:
                 while len(enemies)>0 and enemies[0].health<=0:
                     enemies = enemies[1:]
                 while len(enemies) < 3:
-                    if random.randint(0, 1):
-                        enemies.append(Enemy.Zombie())
-                    else:
-                        enemies.append(Enemy.Eater_Of_Souls())
+                    enemies.append(random.choice(enemy_list)())
                 player.turn(enemies[0])
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
@@ -62,8 +63,8 @@ while running:
     screen.fill((255, 255, 255))
 
     for pos, enemy in enumerate(enemies):
-        enemy.draw(screen, 80+pos*150, 50)
-        enemy.drawdice(screen, 80+pos*150, 50)
+        enemy.draw(screen, 80+pos*200, 50)
+        enemy.drawdice(screen, 80+pos*200, 50)
     Layout.basic.draw(screen, (player, enemies[0]))
 
 
@@ -74,25 +75,25 @@ pygame.quit()
 '''
 ### ROADMAP ###
 
-1) Functional Fight
+1) Functional Fight --- DONE ---
     a) Player Class --- DONE ---
     b) Item Effects --- DONE ---
     c) Turn Resolution --- DONE ---
-    d) Fight Resolution
+    d) Fight Resolution --- DONE ---
         i) For Enemies --- DONE ---
-        ii) For Players
+        ii) For Players --- DONE ---
     
 2) 10 Enemies
-    a) Green Slime
-    b) Skeleton
-    c) Hornet
-    d) Blood Crawler
-    e) Harpy
-    f) Shark
+    a) Ice Slime --- DONE ---
+    b) Skeleton --- DONE ---
+    c) Hornet --- DONE ---
+    d) Blood Crawler --- DONE ---
+    e) Harpy --- DONE ---
+    f) Shark --- DONE ---
     g) Vulture
     h) Tim
-    i) Antlion
-    j) Demon
+    i) Antlion --- DONE ---
+    j) Demon --- DONE ---
 
 3) 20 Items
     a) Copper Broadsword
