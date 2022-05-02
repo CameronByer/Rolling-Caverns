@@ -35,6 +35,7 @@ po = Item.Potion()
 ws = Item.Wooden_Sword()
 
 player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(1)]) for i in range(3)]
+player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))(), None) for f in range(6)]) for d in range(3)]
 
 player = Player.Player(100, player_dice)
 
@@ -90,16 +91,16 @@ pygame.quit()
     d) Blood Crawler --- DONE ---
     e) Harpy --- DONE ---
     f) Shark --- DONE ---
-    g) Vulture
-    h) Tim
+    g) Vulture --- DONE ---
+    h) Tim --- DONE ---
     i) Antlion --- DONE ---
     j) Demon --- DONE ---
 
 3) 20 Items
-    a) Copper Broadsword
-    b) Iron Broadsword
-    c) Silver Broadsword
-    d) Gold Broadsword
+    a) Copper Broadsword --- DONE ---
+    b) Iron Broadsword --- DONE ---
+    c) Silver Broadsword --- DONE ---
+    d) Gold Broadsword --- DONE ---
     e) Wooden Bow
     f) Copper Bow
     g) Iron Bow

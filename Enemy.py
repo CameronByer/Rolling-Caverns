@@ -68,7 +68,7 @@ class Shark(Enemy, damage=22, frames=4):
         dice = [Die.Die("COST", [self.default_attack]*1+[Die.Face(Item.dud, "VALUE")]*5) for d in range(3)]
         super().__init__(300, dice, None, self.frames)
 
-class Skeleton(Enemy, damage=8, frames=6):
+class Skeleton(Enemy, damage=8, frames=15):
     def __init__(self):
         dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud, "VALUE")]*3) for d in range(3)]
         super().__init__(60, dice, None, self.frames)
