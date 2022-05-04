@@ -33,11 +33,19 @@ class Copper_Broadsword(Item, damage=8):
     def __init__(self):
         super().__init__()
 
+class Gold_Bow(Item, damage=11):
+    def __init__(self):
+        super().__init__()
+
 class Gold_Broadsword(Item, damage=13):
     def __init__(self):
         super().__init__()
 
 class Gold_Helmet(Item, block=15):
+    def __init__(self):
+        super().__init__()
+
+class Iron_Bow(Item, damage=8):
     def __init__(self):
         super().__init__()
 
@@ -49,7 +57,19 @@ class Potion(Item, heal=10):
     def __init__(self):
         super().__init__()
 
+class Silver_Bow(Item, damage=9):
+    def __init__(self):
+        super().__init__()
+
 class Silver_Broadsword(Item, damage=11):
+    def __init__(self):
+        super().__init__()
+
+class Wooden_Arrow(Item, damage=4):
+    def __init__(self):
+        super().__init__()
+
+class Wooden_Bow(Item, damage=4):
     def __init__(self):
         super().__init__()
         

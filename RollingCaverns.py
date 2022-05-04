@@ -84,7 +84,7 @@ pygame.quit()
         i) For Enemies --- DONE ---
         ii) For Players --- DONE ---
     
-2) 10 Enemies
+2) 10 Enemies --- DONE ---
     a) Ice Slime --- DONE ---
     b) Skeleton --- DONE ---
     c) Hornet --- DONE ---
@@ -101,12 +101,12 @@ pygame.quit()
     b) Iron Broadsword --- DONE ---
     c) Silver Broadsword --- DONE ---
     d) Gold Broadsword --- DONE ---
-    e) Wooden Bow
-    f) Copper Bow
-    g) Iron Bow
-    h) Silver Bow
-    i) Gold Bow
-    j) Arrow
+    e) Wooden Bow --- DONE ---
+    f) Copper Bow --- DONE ---
+    g) Iron Bow --- DONE ---
+    h) Silver Bow --- DONE ---
+    i) Gold Bow --- DONE ---
+    j) Arrow --- DONE ---
     k) Wand of Sparking
     l) Crimson Rod
     m) Vilethorn
