@@ -33,6 +33,18 @@ class Copper_Broadsword(Item, damage=8):
     def __init__(self):
         super().__init__()
 
+class Copper_Chainmail(Item, block=6):
+    def __init__(self):
+        super().__init__()
+
+class Copper_Greaves(Item, block=3):
+    def __init__(self):
+        super().__init__()
+
+class Copper_Helmet(Item, block=3):
+    def __init__(self):
+        super().__init__()
+
 class Gold_Bow(Item, damage=11):
     def __init__(self):
         super().__init__()
@@ -41,7 +53,15 @@ class Gold_Broadsword(Item, damage=13):
     def __init__(self):
         super().__init__()
 
-class Gold_Helmet(Item, block=15):
+class Gold_Chainmail(Item, block=15):
+    def __init__(self):
+        super().__init__()
+
+class Gold_Greaves(Item, block=12):
+    def __init__(self):
+        super().__init__()
+
+class Gold_Helmet(Item, block=12):
     def __init__(self):
         super().__init__()
 
@@ -53,7 +73,19 @@ class Iron_Broadsword(Item, damage=10):
     def __init__(self):
         super().__init__()
 
-class Potion(Item, heal=10):
+class Iron_Chainmail(Item, block=9):
+    def __init__(self):
+        super().__init__()
+
+class Iron_Greaves(Item, block=6):
+    def __init__(self):
+        super().__init__()
+
+class Iron_Helmet(Item, block=6):
+    def __init__(self):
+        super().__init__()
+
+class Lesser_Healing_Potion(Item, heal=10):
     def __init__(self):
         super().__init__()
 
@@ -62,6 +94,18 @@ class Silver_Bow(Item, damage=9):
         super().__init__()
 
 class Silver_Broadsword(Item, damage=11):
+    def __init__(self):
+        super().__init__()
+
+class Silver_Chainmail(Item, block=12):
+    def __init__(self):
+        super().__init__()
+
+class Silver_Greaves(Item, block=9):
+    def __init__(self):
+        super().__init__()
+
+class Silver_Helmet(Item, block=9):
     def __init__(self):
         super().__init__()
 

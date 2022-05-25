@@ -30,12 +30,7 @@ enemy_list = (Enemy.Antlion,
               Enemy.Vulture,
               Enemy.Zombie)
 
-gh = Item.Gold_Helmet()
-po = Item.Potion()
-ws = Item.Wooden_Sword()
-
-player_dice = [Die.Die(0, [Die.Face(ws, None) for i in range(3)]+[Die.Face(gh, None) for i in range(2)]+[Die.Face(po, None) for i in range(1)]) for i in range(3)]
-player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))(), None) for f in range(6)]) for d in range(3)]
+player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))(), None) for f in range(20)]) for d in range(4)]
 
 player = Player.Player(100, player_dice)
 
@@ -114,11 +109,12 @@ pygame.quit()
     o) Waterbolt
     p) Mana Crystal
     q) Mana Potion
-    r) Lesser Healing Potion
+    r) Lesser Healing Potion --- DONE ---
     s) Wood Armor
-    t) Iron Armor
-    u) Silver Armor
-    v) Gold Armor
+    t) Copper Armor --- DONE ---
+    u) Iron Armor --- DONE ---
+    v) Silver Armor --- DONE ---
+    w) Gold Armor --- DONE ---
 
 4) Die Customization
 
