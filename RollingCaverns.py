@@ -110,7 +110,7 @@ pygame.quit()
     p) Mana Crystal
     q) Mana Potion
     r) Lesser Healing Potion --- DONE ---
-    s) Wood Armor
+    s) Wood Armor --- DONE ---
     t) Copper Armor --- DONE ---
     u) Iron Armor --- DONE ---
     v) Silver Armor --- DONE ---

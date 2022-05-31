@@ -109,6 +109,18 @@ class Silver_Helmet(Item, block=9):
     def __init__(self):
         super().__init__()
 
+class Wood_Breastplate(Item, block=3):
+    def __init__(self):
+        super().__init__()
+
+class Wood_Greaves(Item, block=3):
+    def __init__(self):
+        super().__init__()
+
+class Wood_Helmet(Item, block=0):
+    def __init__(self):
+        super().__init__()
+
 class Wooden_Arrow(Item, damage=4):
     def __init__(self):
         super().__init__()
