@@ -40,7 +40,7 @@ class Roller:
         self.health = max(0, self.health)        
 
     def roll(self):
-        result = {"damage": 0, "block":0, "heal":0}
+        result = {"damage": 0, "block":0, "heal":0, "mana":0, "maxhealth":0, "maxmana":0}
         for die in self.dice:
             outcome = die.roll()
             for stat in outcome.item.stats:

@@ -45,6 +45,10 @@ class Copper_Helmet(Item, block=3):
     def __init__(self):
         super().__init__()
 
+class Crimson_Rod(Item, damage=12):
+    def __init__(self):
+        super().__init__()    
+
 class Gold_Bow(Item, damage=11):
     def __init__(self):
         super().__init__()
@@ -85,7 +89,19 @@ class Iron_Helmet(Item, block=6):
     def __init__(self):
         super().__init__()
 
-class Lesser_Healing_Potion(Item, heal=10):
+class Lesser_Healing_Potion(Item, heal=50):
+    def __init__(self):
+        super().__init__()
+
+class Lesser_Mana_Potion(Item, mana=50):
+    def __init__(self):
+        super().__init__()
+
+class Life_Crystal(Item, maxhealth=20):
+    def __init__(self):
+        super().__init__()
+
+class Mana_Crystal(Item, maxmana=20):
     def __init__(self):
         super().__init__()
 
@@ -106,6 +122,22 @@ class Silver_Greaves(Item, block=9):
         super().__init__()
 
 class Silver_Helmet(Item, block=9):
+    def __init__(self):
+        super().__init__()
+
+class Space_Gun(Item, damage=16):
+    def __init__(self):
+        super().__init__()
+
+class Vilethorn(Item, damage=10):
+    def __init__(self):
+        super().__init__()
+
+class Wand_of_Sparking(Item, damage=14):
+    def __init__(self):
+        super().__init__()
+
+class Water_Bolt(Item, damage=19):
     def __init__(self):
         super().__init__()
 

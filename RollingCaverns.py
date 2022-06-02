@@ -102,19 +102,20 @@ pygame.quit()
     h) Silver Bow --- DONE ---
     i) Gold Bow --- DONE ---
     j) Arrow --- DONE ---
-    k) Wand of Sparking
-    l) Crimson Rod
-    m) Vilethorn
-    n) Space Gun
-    o) Waterbolt
-    p) Mana Crystal
-    q) Mana Potion
+    k) Wand of Sparking --- DONE ---
+    l) Crimson Rod --- DONE ---
+    m) Vilethorn --- DONE ---
+    n) Space Gun --- DONE ---
+    o) Waterbolt --- DONE ---
+    p) Mana Crystal --- DONE ---
+    q) Lesser Mana Potion --- DONE ---
     r) Lesser Healing Potion --- DONE ---
-    s) Wood Armor --- DONE ---
-    t) Copper Armor --- DONE ---
-    u) Iron Armor --- DONE ---
-    v) Silver Armor --- DONE ---
-    w) Gold Armor --- DONE ---
+    s) Life Crystal --- DONE ---
+    t) Wood Armor --- DONE ---
+    u) Copper Armor --- DONE ---
+    v) Iron Armor --- DONE ---
+    w) Silver Armor --- DONE ---
+    x) Gold Armor --- DONE ---
 
 4) Die Customization
 
