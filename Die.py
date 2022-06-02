@@ -6,18 +6,19 @@ class Die:
     def __init__(self, cost, faces):
         self.cost = cost
         self.faces = faces
-        self.top = faces[0]
         self.roll()
 
     def draw(self, screen, x, y, face_size=50, border=2):
         self.top.draw(screen, x, y, face_size, border)
 
     def draw_expanded(self, screen, x, y, face_size=50, border=2):
-        #offsets = [(1, 0), (0, 1), (1, 1), (2, 1), (1, 2), (1, 3)]
-        offsets = [(i, j) for i in range(3) for j in range(2)]
+        offsets = [(i%3, i//3) for i in range(len(self.faces))]
         for f in range(len(self.faces)):
             self.faces[f].draw(screen, x+offsets[f][0]*(face_size-border), y+offsets[f][1]*(face_size-border))
 
+    def on_click(self):
+        self.expanded = not self.expanded
+    
     def roll(self):
         self.top = random.choice(self.faces)
         return self.top
