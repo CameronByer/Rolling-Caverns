@@ -25,12 +25,19 @@ def left_under(screen, roller):
     roller.draw(screen, XINDENT, SCREEN_HEIGHT-roller.image.get_height()-YINDENT)
     roller.drawhealth(screen, DIE_PADDING, SCREEN_HEIGHT-HEALTH_HEIGHT-YINDENT, HEALTH_WIDTH, HEALTH_HEIGHT)
     for slot, die in enumerate(roller.dice):
-        die.draw(screen, DIE_PADDING+slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING, DIE_SIZE)
+        die.pos = (DIE_PADDING+slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING)
+        die.face_size = DIE_SIZE
+        die.draw(screen)
+        #die.draw(screen, DIE_PADDING+slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING, DIE_SIZE)
 
 def right_under(screen, roller):
     roller.draw(screen, SCREEN_WIDTH-XINDENT-roller.image.get_width(), SCREEN_HEIGHT-roller.image.get_height()-YINDENT)
     roller.drawhealth(screen, SCREEN_WIDTH-DIE_PADDING-HEALTH_WIDTH, SCREEN_HEIGHT-HEALTH_HEIGHT-YINDENT, HEALTH_WIDTH, HEALTH_HEIGHT)
     for slot, die in enumerate(roller.dice):
-        die.draw(screen, SCREEN_WIDTH-DIE_SIZE-DIE_PADDING-slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING, DIE_SIZE)
+        die.pos = (SCREEN_WIDTH-DIE_SIZE-DIE_PADDING-slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING)
+        die.face_size = DIE_SIZE
+        die.draw(screen)
+        #die.draw(screen, SCREEN_WIDTH-DIE_SIZE-DIE_PADDING-slot*(DIE_SIZE+DIE_PADDING), SCREEN_HEIGHT-DIE_SIZE-DIE_PADDING, DIE_SIZE)
+        
 
 basic = Layout([left_under, right_under])

@@ -20,70 +20,70 @@ class Enemy(Roller.Roller):
         cls.image = cropped
         cls.size = w, h
         cls.damage = damage
-        cls.default_attack = Die.Face(Item.Item(name=name, image=cls.image, damage=cls.damage), "VALUE")
+        cls.default_attack = Die.Face(Item.Item(name=name, image=cls.image, damage=cls.damage))
 
 class Antlion(Enemy, damage=15, frames=5):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(1)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud)]*2) for d in range(1)]
         super().__init__(45, dice, None, self.frames)
 
 class Blood_Crawler(Enemy, damage=20, frames=5):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud, "VALUE")]*4) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud)]*4) for d in range(2)]
         super().__init__(60, dice, None, self.frames)
 
 class Demon(Enemy, damage=20, frames=5):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud, "VALUE")]*3) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud)]*3) for d in range(2)]
         super().__init__(120, dice, None, self.frames)    
 
 class Eater_Of_Souls(Enemy, damage=7, frames=2):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud, "VALUE")]*3) for d in range(3)]
+        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud)]*3) for d in range(3)]
         super().__init__(40, dice, None, self.frames)
         #self.image = pygame.transform.rotate(self.image, -90)
 
 class Eye_Of_Cthulhu(Enemy, damage=7, frames=6):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*5+[Die.Face(Item.dud, "VALUE")]*1) for d in range(5)]
+        dice = [Die.Die("COST", [self.default_attack]*5+[Die.Face(Item.dud)]*1) for d in range(5)]
         super().__init__(3000, dice, None, self.frames)
 
 class Harpy(Enemy, damage=10, frames=6):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud, "VALUE")]*3) for d in range(4)]
+        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud)]*3) for d in range(4)]
         super().__init__(100, dice, None, self.frames)
 
 class Hornet(Enemy, damage=12, frames=3):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud, "VALUE")]*4) for d in range(4)]
+        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud)]*4) for d in range(4)]
         super().__init__(48, dice, None, self.frames)
 
 class Ice_Slime(Enemy, damage=9, frames=2):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*5+[Die.Face(Item.dud, "VALUE")]*1) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*5+[Die.Face(Item.dud)]*1) for d in range(2)]
         super().__init__(30, dice, None, self.frames)
 
 class Shark(Enemy, damage=22, frames=4):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*1+[Die.Face(Item.dud, "VALUE")]*5) for d in range(3)]
+        dice = [Die.Die("COST", [self.default_attack]*1+[Die.Face(Item.dud)]*5) for d in range(3)]
         super().__init__(300, dice, None, self.frames)
 
 class Skeleton(Enemy, damage=8, frames=15):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud, "VALUE")]*3) for d in range(3)]
+        dice = [Die.Die("COST", [self.default_attack]*3+[Die.Face(Item.dud)]*3) for d in range(3)]
         super().__init__(60, dice, None, self.frames)
 
 class Tim(Enemy, damage=10, frames=3):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud, "VALUE")]*4) for d in range(5)]
+        dice = [Die.Die("COST", [self.default_attack]*2+[Die.Face(Item.dud)]*4) for d in range(5)]
         super().__init__(200, dice, None, self.frames)
 
 class Vulture(Enemy, damage=6, frames=6):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud)]*2) for d in range(2)]
         super().__init__(40, dice, None, self.frames)
 
 class Zombie(Enemy, damage=8, frames=3):
     def __init__(self):
-        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud, "VALUE")]*2) for d in range(2)]
+        dice = [Die.Die("COST", [self.default_attack]*4+[Die.Face(Item.dud)]*2) for d in range(2)]
         super().__init__(45, dice, None, self.frames)

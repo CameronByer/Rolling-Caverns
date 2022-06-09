@@ -30,7 +30,7 @@ enemy_list = (Enemy.Antlion,
               Enemy.Vulture,
               Enemy.Zombie)
 
-player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))(), None) for f in range(20)]) for d in range(4)]
+player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))()) for f in range(9)]) for d in range(4)]
 
 player = Player.Player(100, player_dice)
 
@@ -54,13 +54,15 @@ while running:
                 player.turn(enemies[0])
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1: #Left Click
-                pass
+                for die in player.dice:
+                    if die.contains(event.pos):
+                        die.click()
 
     screen.fill((255, 255, 255))
 
     for pos, enemy in enumerate(enemies):
         enemy.draw(screen, 80+pos*200, 50)
-        enemy.drawdice(screen, 80+pos*200, 50)
+        #enemy.drawdice(screen, 80+pos*200, 50)
     Layout.basic.draw(screen, (player, enemies[0]))
 
 
