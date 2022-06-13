@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class Item:
     items = {}
@@ -24,6 +25,8 @@ class Item:
         Item.items[name] = cls
     def draw(self, screen, x, y, w, h):
         screen.blit(pygame.transform.scale(self.image, (w, h)), (x, y))
+    def random_item():
+        return random.choice(list(Item.items.values()))()
 
 class Dud(Item):
     def __init__(self):

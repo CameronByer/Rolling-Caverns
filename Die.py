@@ -9,23 +9,29 @@ class Die:
         self.expanded = False
         self.pos = (0, 0)
         self.face_size = 0
-        self.expanded_pos = (0, 0)
-        self.expanded_face_size = 0
+        self.expanded_pos = (300, 200)
+        self.expanded_face_size = 50
         self.roll()
 
     def click(self):
         self.expanded = not self.expanded
 
-    def click_expanded(self):
-        #relative
-        pass
-
     def contains(self, point):
         rect = pygame.Rect(self.pos, (self.face_size, self.face_size))
         return self.pos[0] <= point[0] and self.pos[1] <= point[1] and self.pos[0]+self.face_size > point[0] and self.pos[1]+self.face_size > point[1]
 
-    def contains_expanded(self, point):
-        pass
+    def get_expanded_index(self, point):
+        if not self.expanded:
+            return None
+        COLUMNS = 3
+        relative = (point[0]-self.expanded_pos[0], point[1]-self.expanded_pos[1])
+        if relative[0] >= 0 and relative[0] < self.expanded_face_size*COLUMNS:
+            x = relative[0] // self.expanded_face_size
+            y = relative[1] // self.expanded_face_size
+            index = y*COLUMNS + x
+            if index >= 0 and index < len(self.faces):
+                return index
+        return None
 
     def draw(self, screen, border=2):
         self.top.draw(screen, self.pos, self.face_size, border)

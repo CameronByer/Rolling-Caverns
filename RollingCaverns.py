@@ -30,7 +30,7 @@ enemy_list = (Enemy.Antlion,
               Enemy.Vulture,
               Enemy.Zombie)
 
-player_dice = [Die.Die(0, [Die.Face(random.choice(list(Item.Item.items.values()))()) for f in range(9)]) for d in range(4)]
+player_dice = [Die.Die(0, [Die.Face(Item.Item.random_item()) for f in range(9)]) for d in range(4)]
 
 player = Player.Player(100, player_dice)
 
@@ -52,11 +52,13 @@ while running:
                 while len(enemies) < 3:
                     enemies.append(random.choice(enemy_list)())
                 player.turn(enemies[0])
-        if event.type == pygame.MOUSEBUTTONUP:
-            if event.button == 1: #Left Click
+            if event.button == 3: #Right Click
                 for die in player.dice:
                     if die.contains(event.pos):
                         die.click()
+                    expandedFaceIndex = die.get_expanded_index(event.pos)
+                    if expandedFaceIndex != None:
+                        die.faces[expandedFaceIndex] = Die.Face(Item.Item.random_item())
 
     screen.fill((255, 255, 255))
 
