@@ -44,7 +44,7 @@ while running:
     clock.tick(FPS) ## will make the loop run at the same speed all the time
     enemy = enemies[0]
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT or not player.active:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if combat:
@@ -89,55 +89,13 @@ pygame.quit()
 '''
 ### ROADMAP ###
 
-1) Functional Fight --- DONE ---
-    a) Player Class --- DONE ---
-    b) Item Effects --- DONE ---
-    c) Turn Resolution --- DONE ---
-    d) Fight Resolution --- DONE ---
-        i) For Enemies --- DONE ---
-        ii) For Players --- DONE ---
-    
-2) 10 Enemies --- DONE ---
-    a) Ice Slime --- DONE ---
-    b) Skeleton --- DONE ---
-    c) Hornet --- DONE ---
-    d) Blood Crawler --- DONE ---
-    e) Harpy --- DONE ---
-    f) Shark --- DONE ---
-    g) Vulture --- DONE ---
-    h) Tim --- DONE ---
-    i) Antlion --- DONE ---
-    j) Demon --- DONE ---
+1) Inventory
 
-3) 20 Items
-    a) Copper Broadsword --- DONE ---
-    b) Iron Broadsword --- DONE ---
-    c) Silver Broadsword --- DONE ---
-    d) Gold Broadsword --- DONE ---
-    e) Wooden Bow --- DONE ---
-    f) Copper Bow --- DONE ---
-    g) Iron Bow --- DONE ---
-    h) Silver Bow --- DONE ---
-    i) Gold Bow --- DONE ---
-    j) Arrow --- DONE ---
-    k) Wand of Sparking --- DONE ---
-    l) Crimson Rod --- DONE ---
-    m) Vilethorn --- DONE ---
-    n) Space Gun --- DONE ---
-    o) Waterbolt --- DONE ---
-    p) Mana Crystal --- DONE ---
-    q) Lesser Mana Potion --- DONE ---
-    r) Lesser Healing Potion --- DONE ---
-    s) Life Crystal --- DONE ---
-    t) Wood Armor --- DONE ---
-    u) Copper Armor --- DONE ---
-    v) Iron Armor --- DONE ---
-    w) Silver Armor --- DONE ---
-    x) Gold Armor --- DONE ---
+2) Modifiable Dice from Inventory
 
-4) Die Customization --- DONE ---
+3) Rework Player Death
 
-5) Game Map --- DONE --
+4) Enemy Loot
 
 ###
 '''

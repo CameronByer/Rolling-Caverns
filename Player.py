@@ -6,8 +6,10 @@ class Player(Roller.Roller):
     def __init__(self, health, dice):
         super().__init__("Player", health, dice)
         self.image = pygame.image.load("Other/Player.png")
+        self.active = True
 
     def kill(self):
+        self.active = False
         self.health = self.maxhealth
         print("DEATH")
 
