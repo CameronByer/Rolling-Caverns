@@ -34,10 +34,11 @@ player_dice = [Die.Die(0, [Die.Face(Item.Item.random_item()) for f in range(9)])
 
 player = Player.Player(100, player_dice)
 
-enemies = [random.choice(enemy_list)() for i in range(3)]
+enemies = [random.choice(enemy_list)() for i in range(6)]
 
 ## Game loop
 running = True
+combat = False
 while running:
 
     clock.tick(FPS) ## will make the loop run at the same speed all the time
@@ -46,27 +47,40 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1: #Left Click
-                while len(enemies)>0 and enemies[0].health<=0:
-                    enemies = enemies[1:]
-                while len(enemies) < 3:
-                    enemies.append(random.choice(enemy_list)())
-                player.turn(enemies[0])
-            if event.button == 3: #Right Click
-                for die in player.dice:
-                    if die.contains(event.pos):
-                        die.click()
-                    expandedFaceIndex = die.get_expanded_index(event.pos)
-                    if expandedFaceIndex != None:
-                        die.faces[expandedFaceIndex] = Die.Face(Item.Item.random_item())
+            if combat:
+                if event.button == 1:
+                    player.turn(enemies[0])
+                    if enemies[0].health <= 0:
+                        enemies = enemies[1:]
+                        while len(enemies) < 6:
+                            enemies.append(random.choice(enemy_list)())
+                        combat = False
+                if event.button == 3: #Right Click
+                    for die in player.dice:
+                        if die.contains(event.pos):
+                            die.click()
+                        expandedFaceIndex = die.get_expanded_index(event.pos)
+                        if expandedFaceIndex != None:
+                            die.faces[expandedFaceIndex] = Die.Face(Item.Item.random_item())
+            else:
+                if event.button == 1: #Left Click
+                    enemies = [enemies[0]]+enemies[2:]
+                    combat = True
+                if event.button == 3: #Left Click
+                    enemies = [enemies[1]]+enemies[2:]
+                    combat = True
+                    
 
     screen.fill((255, 255, 255))
 
-    for pos, enemy in enumerate(enemies):
-        enemy.draw(screen, 80+pos*200, 50)
-        #enemy.drawdice(screen, 80+pos*200, 50)
-    Layout.basic.draw(screen, (player, enemies[0]))
-
+    if combat:
+        Layout.basic.draw(screen, (player, enemies[0]))
+    else:
+        for pos, enemy in enumerate(enemies):
+            xpos = pos//2
+            ypos = pos%2
+            enemy.draw(screen, 80+xpos*200, 50+ypos*200)
+            #enemy.drawdice(screen, 80+pos*200, 50)
 
     pygame.display.flip()
 
@@ -121,9 +135,9 @@ pygame.quit()
     w) Silver Armor --- DONE ---
     x) Gold Armor --- DONE ---
 
-4) Die Customization
+4) Die Customization --- DONE ---
 
-5) Game Map
+5) Game Map --- DONE --
 
 ###
 '''
