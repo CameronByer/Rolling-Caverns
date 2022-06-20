@@ -30,7 +30,7 @@ enemy_list = (Enemy.Antlion,
               Enemy.Vulture,
               Enemy.Zombie)
 
-player_dice = [Die.Die(0, [Die.Face(Item.Item.random_item()) for f in range(9)]) for d in range(4)]
+player_dice = [Die.Die(0, [Die.Face(Item.Dud()) for f in range(6)]) for d in range(3)]
 
 player = Player.Player(100, player_dice)
 
@@ -47,6 +47,8 @@ while running:
         if event.type == pygame.QUIT or not player.active:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 2:
+                player.inventory_open = not player.inventory_open
             if combat:
                 if event.button == 1:
                     player.turn(enemies[0])
@@ -58,15 +60,27 @@ while running:
                 if event.button == 3: #Right Click
                     for die in player.dice:
                         if die.contains(event.pos):
+                            for other_die in player.dice:
+                                other_die.selected = False
                             die.click()
                         expandedFaceIndex = die.get_expanded_index(event.pos)
                         if expandedFaceIndex != None:
-                            die.faces[expandedFaceIndex] = Die.Face(Item.Item.random_item())
+                            for face in die.faces:
+                                face.selected = False
+                            die.faces[expandedFaceIndex].selected = True
+                            player.inventory_open = True
+                            #die.faces[expandedFaceIndex] = Die.Face(Item.Item.random_item())
+                    if player.get_inventory_index(event.pos) and player.get_selected_index():
+                        die_index, face_index = player.get_selected_index()
+                        inventory_index = player.get_inventory_index(event.pos)
+                        player.dice[die_index].faces[face_index], player.inventory[inventory_index] = player.inventory[inventory_index], player.dice[die_index].faces[face_index]
+                        player.dice[die_index].faces[face_index].selected = False
+                        player.inventory[inventory_index].selected = False
             else:
                 if event.button == 1: #Left Click
                     enemies = [enemies[0]]+enemies[2:]
                     combat = True
-                if event.button == 3: #Left Click
+                if event.button == 3: #Right Click
                     enemies = [enemies[1]]+enemies[2:]
                     combat = True
                     
