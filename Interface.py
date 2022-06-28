@@ -29,6 +29,9 @@ class ItemSlot(Slot):
     def contains(self, point):
         return self.pos[0] < point[0] < self.pos[0]+self.size and self.pos[1] < point[1] < self.pos[1]+self.size
 
+    def click(self, curItem=None):
+        pass
+
 class DieSlot(Slot):
 
     def __init__(self, die, pos, size=50):
