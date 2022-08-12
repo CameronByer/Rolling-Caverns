@@ -11,11 +11,9 @@ class Die:
         self.face_size = 0
         self.expanded_pos = (300, 200)
         self.expanded_face_size = 50
-        self.selected = False
         self.roll()
 
     def click(self):
-        self.selected = not self.selected
         self.expanded = not self.expanded
 
     def contains(self, point):
@@ -36,7 +34,7 @@ class Die:
         return None
 
     def draw(self, screen, border=2):
-        self.top.draw(screen, self.pos, self.face_size, border, self.selected)
+        self.top.draw(screen, self.pos, self.face_size, border)
         if self.expanded:
             self.draw_expanded(screen, (300, 200), border)
 
@@ -53,12 +51,8 @@ class Face:
 
     def __init__(self, item):
         self.item = item
-        self.selected = False
 
-    def draw(self, screen, pos, face_size=50, border=2, selected=False):
-        color = (0, 0, 0)
-        if selected or self.selected:
-            color = (255, 0, 0)
-        pygame.draw.rect(screen, color, (pos[0], pos[1], face_size, face_size))
+    def draw(self, screen, pos, face_size=50, border=2):
+        pygame.draw.rect(screen, (0, 0, 0), (pos[0], pos[1], face_size, face_size))
         pygame.draw.rect(screen, (255, 255, 255), (pos[0]+border, pos[1]+border, face_size-2*border, face_size-2*border))
         self.item.draw(screen, pos[0]+border+5, pos[1]+border+5, face_size-2*border-10, face_size-2*border-10)
